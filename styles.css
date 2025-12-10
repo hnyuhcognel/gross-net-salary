@@ -1,0 +1,242 @@
+/* Color Palette */
+:root {
+    --primary-color: #00796b;
+    /* Teal/Emerald for action */
+    --secondary-color: #333;
+    /* Dark gray for text */
+    --background-color: #f4f7f6;
+    /* Light background */
+    --card-background: #ffffff;
+    --border-color: #e0e0e0;
+    --positive-color: #004d40;
+    /* Darker green for positive numbers */
+    --negative-color: #b71c1c;
+    /* Red for subtractions (Insurance/PIT) */
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    color: var(--secondary-color);
+}
+
+.calculator-container {
+    background: var(--card-background);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 975px;
+    /* Đã tăng từ 650px lên 975px (tăng 50%) */
+}
+
+h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.disclaimer {
+    text-align: center;
+    color: #888;
+    font-size: 0.9em;
+    margin-bottom: 30px;
+}
+
+/* --- New Layout for Two Columns --- */
+.input-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.input-group {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+/* Áp dụng cho cả input type="text" (lương) và type="number" (NPT) */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1.1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.2);
+    outline: none;
+}
+
+/* --- Section Titles for Radio Groups --- */
+.section-title {
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
+    padding-bottom: 5px;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.region-section {
+    margin-top: 25px;
+}
+
+/* --- Insurance and Region Radio Group Styles --- */
+.insurance-options,
+.region-options {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio-group label {
+    font-weight: normal;
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+
+/* Điều chỉnh lại style cho input lương bảo hiểm (hiện đang là type="text") */
+.custom-ins-group input[type="text"] {
+    width: 180px;
+    /* Tăng nhẹ chiều rộng cho input lương BH tùy chỉnh */
+    margin-left: 10px;
+    padding: 8px;
+    font-size: 0.9em;
+}
+
+/* --- Button Row --- */
+.button-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.calculate-btn {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s, color 0.3s, box-shadow 0.3s;
+}
+
+.calculate-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 121, 107, 0.3);
+    border: none;
+}
+
+.calculate-btn:not(.active) {
+    background-color: #f1f1f1;
+    color: #666;
+    border: 1px solid #ccc;
+    box-shadow: none;
+}
+
+.calculate-btn.active:hover {
+    background-color: #00665c;
+}
+
+/* Thêm style cho nút thứ cấp (NET → GROSS) */
+.secondary-btn {
+    background-color: #e0e0e0;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    box-shadow: none;
+}
+
+.secondary-btn:hover {
+    background-color: #d1d1d1;
+    color: var(--primary-color);
+}
+
+
+/* --- Results Area Styling --- */
+.result-area {
+    margin-top: 35px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 25px;
+}
+
+.result-area h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.05em;
+}
+
+.result-item:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.net-salary-item {
+    font-weight: bold;
+    color: var(--positive-color);
+    font-size: 1.3em;
+    padding-top: 20px;
+    border-top: 2px solid var(--primary-color);
+    margin-top: 10px;
+}
+
+.positive {
+    color: var(--positive-color);
+    font-weight: 700;
+}
+
+.negative {
+    color: var(--negative-color);
+    font-weight: 600;
+}
+
+/* Ẩn mũi tên điều chỉnh cho input type="number" */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Cụ Tính Lương Gross-to-Net</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="calculator-container">
+        <h2>Công Cụ Tính Lương Gross Net</h2>
+        <p class="disclaimer">Tính toán dựa trên các mức thuế và khoản giảm trừ *dự kiến* áp dụng từ năm 2026.</p>
+
+        <div class="input-row">
+            <div class="input-group">
+                <label for="inputSalary">Nhập Lương (VNĐ):</label>
+                <input type="text" id="inputSalary" value="0" min="0">
+            </div>
+
+            <div class="input-group">
+                <label for="dependents">Số Lượng Người Phụ Thuộc:</label>
+                <input type="number" id="dependents" value="0" min="0">
+            </div>
+        </div>
+
+        <div class="section-title">Mức lương đóng bảo hiểm:</div>
+        <div class="insurance-options">
+            <div class="radio-group">
+                <input type="radio" id="insSameAsGross" name="insuranceType" value="same" checked>
+                <label for="insSameAsGross">Trên lương chính thức (Gross)</label>
+            </div>
+            <div class="radio-group custom-ins-group">
+                <input type="radio" id="insCustom" name="insuranceType" value="custom">
+                <label for="insCustom">Khác (VNĐ):</label>
+                <input type="text" id="insuranceSalary" value="0" min="0" disabled>
+            </div>
+        </div>
+
+        <div class="section-title region-section">Vùng:</div>
+        <div class="region-options">
+            <div class="radio-group">
+                <input type="radio" id="region1" name="region" value="1" checked>
+                <label for="region1">I</label>
+            </div>
+            <div class="radio-group">
+                <input type="radio" id="region2" name="region" value="2">
+                <label for="region2">II</label>
+            </div>
+            <div class="radio-group">
+                <input type="radio" id="region3" name="region" value="3">
+                <label for="region3">III</label>
+            </div>
+            <div class="radio-group">
+                <input type="radio" id="region4" name="region" value="4">
+                <label for="region4">IV</label>
+            </div>
+        </div>
+
+        <div class="button-row">
+            <button id="grossNetBtn" class="calculate-btn" onclick="setMode('GROSS_TO_NET')">GROSS → NET</button>
+            <button id="netGrossBtn" class="calculate-btn secondary-btn" onclick="setMode('NET_TO_GROSS')">NET →
+                GROSS</button>
+        </div>
+
+        <input type="hidden" id="calculationMode" value="GROSS_TO_NET">
+
+        <div class="result-area">
+            <h3>💰 Kết Quả Tính Toán</h3>
+            <div id="results">
+                <p>Nhập thông tin và chọn chế độ tính toán.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
